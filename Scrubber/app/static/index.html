@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scrubber</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Scrubber</h1>
+    <span class="badge">Local only. Text does not leave this machine.</span>
+  </header>
+
+  <div class="toolbar">
+    <button id="scrub" class="primary" title="Ctrl+Enter">Scrub</button>
+    <button id="copy" disabled>Copy result</button>
+    <button id="clear">Clear</button>
+    <label class="inline"><input type="checkbox" id="auto"> Scrub on paste</label>
+    <span id="status" role="status"></span>
+  </div>
+
+  <main>
+    <section class="pane">
+      <div class="pane-head">Input</div>
+      <textarea id="input" spellcheck="false" placeholder="Paste a config here (JSON, XML, YAML, .env, INI, connection strings...)"></textarea>
+    </section>
+    <section class="pane">
+      <div class="pane-head">Result</div>
+      <pre id="output" tabindex="0"></pre>
+    </section>
+  </main>
+
+  <section id="findings-box" hidden>
+    <details open>
+      <summary>Findings <span id="total"></span></summary>
+      <div id="counts" class="chips"></div>
+      <label class="inline"><input type="checkbox" id="show-values"> Show original values</label>
+      <table id="findings" hidden>
+        <thead><tr><th>Category</th><th>Value</th><th>Count</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </details>
+  </section>
+
+  <section>
+    <details>
+      <summary>Settings</summary>
+      <div class="settings">
+        <fieldset>
+          <legend>Categories</legend>
+          <div id="categories"></div>
+        </fieldset>
+        <label><span>Allowlist (hosts to keep, one per line, <code>*.domain</code> for subdomains)</span>
+          <textarea id="allowlist" rows="10" spellcheck="false"></textarea>
+        </label>
+        <div class="col">
+          <label><span>Parameters (redact the value of these keys, one per line)</span>
+            <textarea id="keys" rows="10" spellcheck="false" placeholder="NoReplyEmailAddress&#10;ShellTitle"></textarea>
+          </label>
+          <div class="toolbar">
+            <button id="save-settings" class="primary">Save settings</button>
+            <button id="reset">Discard changes</button>
+            <span id="settings-status" role="status"></span>
+          </div>
+        </div>
+        <label><span>Custom terms (redact this exact text anywhere, one per line)</span>
+          <textarea id="terms" rows="10" spellcheck="false"></textarea>
+        </label>
+      </div>
+    </details>
+  </section>
+</body>
+</html>

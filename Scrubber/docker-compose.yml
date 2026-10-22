@@ -1,0 +1,19 @@
+services:
+  scrubber:
+    build: .
+    image: scrubber:local
+    container_name: scrubber
+    ports:
+      # Own loopback IP, port 80. The hosts file maps scrubber.test to 127.0.0.2.
+      # Only this machine can connect.
+      - "${SCRUBBER_IP:-127.0.0.2}:80:8080"
+    volumes:
+      - ./config:/config   # writable, so the page can save settings
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
