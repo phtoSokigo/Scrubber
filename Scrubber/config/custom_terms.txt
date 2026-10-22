@@ -1,2 +1,0 @@
-# Terms to always redact, for example customer or server names.
-# One per line. Matching is case-insensitive.
