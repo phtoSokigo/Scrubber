@@ -1,0 +1,4 @@
+# Extra hosts to keep (added to the built-in allowlist).
+# One per line. Use *.domain.tld to keep all subdomains.
+# Example:
+# *.sokigo.com

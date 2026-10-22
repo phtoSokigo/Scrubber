@@ -1,0 +1,7 @@
+# Parameter names whose VALUES are redacted. The name itself is kept.
+# One per line. Case, dots, dashes and underscores are ignored,
+# so NoReplyEmailAddress also matches noreply_email_address and "Smtp:NoReplyEmailAddress".
+NoReplyEmailAddress
+ShellTitle
+NoReplyDisplayName
+ExternalSystemId
